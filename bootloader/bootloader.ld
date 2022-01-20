@@ -4,7 +4,7 @@ ENTRY(boot)
 OUTPUT_FORMAT("binary")
 SECTIONS
 {
-	. = 0x7c00;	// Location of the end of the MBR
+	. = 0x7c00; /* offset sections to the end of the MBR record */
 	.text :
 	{
 		*(.boot)

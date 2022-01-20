@@ -67,9 +67,12 @@ dw 0xaa55				; append bootable signature
 copy_target:
 bits 32					; set assembler output to 32-bits (to run in protected mode)
 
-bootloader:	;; TODO: hand off execution to kernel entry point
-	nop
-	jmp bootloader
+bootloader:
+	mov esp, kernel_stack_top	; move stack pointer to top of the kernel stack
+	extern k_main			; define kernel entry point
+	call k_main			; call kernel entry point (pauses bootloader execution until kernel stops running)
+	cli				; clear interrupts
+	hlt				; halt execution
 
 section .bss
 align 4
