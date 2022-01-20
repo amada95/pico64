@@ -68,5 +68,5 @@ dw 0xaa55				; append bootable signature
 
 copy_target:
 bits 32
-// TODO: handoff execution to the kernel entry point
+;; TODO: handoff execution to the kernel entry point
 times 1024 - ($-$$) db 0		; pad remaining 1024 bytes (2 sectors) with zeroes
