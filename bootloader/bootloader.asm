@@ -6,7 +6,7 @@ global boot
 boot:
 	mov ax, 0x2401
 	int 0x15			; interrupt and enable A20 bit (to enable accessing more than 1MB of memory)
-	
+
 	mov ax, 0x3
 	int 0x10			; interrupt and set vga text mode to 3
 
@@ -21,7 +21,7 @@ boot:
 	mov bx, copy_target		; copy target pointer
 	int 0x13			; 0x13 = Disk Services interrupt
 	cli				; clear interrupts
-	
+
 	lgdt [gdt_pointer]		; load global descriptor table (gdt)
 	mov eax, cr0
 	or eax, 0x1			; set protected mode (32-bit mode) bit on special register cr0
