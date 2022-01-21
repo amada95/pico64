@@ -1,13 +1,10 @@
 /* k_main.c */
 
+#include "../drivers/vga/d_vga.h" //TODO: remove relative path in include
+
 void k_main(void) {
 
 	/* print splash screen */
-	const short f_color = 0x0f00;
-	const char* splash = "beeOS";
-	short* vga = (short*) 0xb8000;
+	vga_init(YELLOW, BLACK);
 
-	for (int i = 0; i<16;++i) {
-        	vga[i+80] = f_color | splash[i];
-	}
 }
