@@ -3,8 +3,6 @@
 
 #define VGA_ADDRESS 0xB8000
 #define VGA_BUFSIZE 2200
-#define VGA_FCOLOR_DEFAULT WHITE //TODO: use this in d_vga.c
-#define VGA_BCOLOR_DEFAULT BLACK //TODO: use this in d_vga.c
 
 void vga_init(unsigned char f_color, unsigned char b_color);
 void vga_print_newline(unsigned char f_color, unsigned char b_color);

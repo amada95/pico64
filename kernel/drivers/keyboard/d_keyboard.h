@@ -1,6 +1,10 @@
 /* d_keyboard.h */
 #pragma once
 
+char keyboard_get_keycode(void);
+void keyboard_wait(unsigned int timer_count);
+char keyboard_keycode_to_ascii(char);
+
 #define KEYBOARD_PORT 0x60
 
 #define KEY_A 0x1E

@@ -1,8 +1,8 @@
-# TODO: un-hardcode this file!
+# TODO: this is garbage! fix it
 
 CC		= gcc
 CC_OUT		= kernel.bin
-CC_SOURCE	= bootloader.o kernel/core/k_main.c kernel/drivers/vga/d_vga.c #TODO: un-hardcode this
+CC_SOURCE	= bootloader.o kernel/core/k_main.c kernel/drivers/vga/d_vga.c kernel/drivers/keyboard/d_keyboard.c kernel/drivers/keyboard/d_keymap.c #TODO: un-hardcode this
 CC_FLAGS	= -m32 -O3 -nostdlib -ffreestanding -mno-red-zone -fno-exceptions -fno-pie -fno-stack-protector -Wall -Wextra -Werror -T bootloader/bootloader.ld
 
 ASM		= nasm
