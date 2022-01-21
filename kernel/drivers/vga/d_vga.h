@@ -1,15 +1,15 @@
-/* vga.h */
-
+/* d_vga.h */
 #pragma once
 
 #define VGA_ADDRESS 0xB8000
 #define VGA_BUFSIZE 2200
-
-/* function prototypes go here */
+#define VGA_FCOLOR_DEFAULT WHITE //TODO: use this in d_vga.c
+#define VGA_BCOLOR_DEFAULT BLACK //TODO: use this in d_vga.c
 
 void vga_init(unsigned char f_color, unsigned char b_color);
-
-/* *** */
+void vga_print_newline(unsigned char f_color, unsigned char b_color);
+void vga_print_char(char ch, unsigned char f_color, unsigned char b_color);
+void vga_print_string(char *str, unsigned char f_color, unsigned char b_color);
 
 enum vga_color {
 	BLACK,
