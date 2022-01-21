@@ -61,13 +61,13 @@ void vga_print_newline(unsigned char f_color, unsigned char b_color) {
 }
 
 void vga_print_char(char ch, unsigned char f_color, unsigned char b_color) {
-	g_vga_buffer[g_vga_index = vga_entry(ch, f_color, b_color);
+	g_vga_buffer[g_vga_index] = vga_entry(ch, f_color, b_color);
 	g_vga_index++;
 	return;
 }
 
 void vga_print_string(char *str, unsigned char f_color, unsigned char b_color) {
-	unsigned int i;
+	unsigned int i = 0;
 	while (str[i]) {
 		vga_print_char(str[i], f_color, b_color);
 		i++;
