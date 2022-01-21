@@ -1,4 +1,5 @@
 /* d_keyboard.h */
+
 #pragma once
 
 char keyboard_get_keycode(void);
