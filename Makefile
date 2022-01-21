@@ -2,7 +2,7 @@
 
 CC		= gcc
 CC_OUT		= kernel.bin
-CC_SOURCE	= bootloader.o kernel/core/k_main.c kernel/drivers/video/vga/k_vga.c #TODO: un-hardcode this
+CC_SOURCE	= bootloader.o kernel/core/k_main.c #TODO: un-hardcode this
 CC_FLAGS	= -m32 -O3 -nostdlib -ffreestanding -mno-red-zone -fno-exceptions -fno-pie -fno-stack-protector -Wall -Wextra -Werror -T bootloader/bootloader.ld
 
 ASM		= nasm
