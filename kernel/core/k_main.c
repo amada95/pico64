@@ -1,13 +1,13 @@
 /* k_main.c */
 
-#include "../drivers/video/vga/k_vga.h" // TODO: remove relative path reference to headers
-
 void k_main(void) {
 
 	/* print splash screen */
-	k_vga_init(YELLOW, BLACK);
-	k_vga_print_string("beeOS", YELLOW, BLACK);
-	k_vga_print_newline(YELLOW, BLACK);
-
-	return;
+	const short f_color = 0x0F00;
+	const char* splash = "Hello cpp world!";
+	short* vga = (short*)0xb8000;
+	
+	for (int i = 0; i<16;++i) {
+        	vga[i+80] = color | hello[i];
+	}
 }

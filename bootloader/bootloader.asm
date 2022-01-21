@@ -71,6 +71,8 @@ bootloader:
 	mov esp, kernel_stack_top	; move stack pointer to top of the kernel stack
 	extern k_main			; define kernel entry point
 	call k_main			; call kernel entry point (pauses bootloader execution until kernel stops running)
+	jmp halt	
+halt:
 	cli				; clear interrupts
 	hlt				; halt execution
 
