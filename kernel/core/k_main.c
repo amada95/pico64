@@ -1,10 +1,12 @@
 /* k_main.c */
 
-#include "../drivers/vga/d_vga.h" 		//TODO: remove relative path in include
-#include "../drivers/keyboard/d_keyboard.h" 	// ^^^
-#include "../drivers/keyboard/d_keymap.h"	// ^^^
+#include "../drivers/vga/d_vga.h"
+#include "../drivers/keyboard/d_keyboard.h"
+#include "../drivers/keyboard/d_keymap.h"
 
 void k_main(void) {
+
+	/***** BEGIN TESTING CODE *****/
 
 	/* print splash screen */
 	vga_init(YELLOW, BLACK);
@@ -30,5 +32,7 @@ void k_main(void) {
 		}
 		keyboard_wait(0x095FFFFF);
 	} while (1);
+
+	/***** END TESTING CODE *****/
 
 }
