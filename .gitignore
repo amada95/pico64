@@ -1,5 +1,3 @@
-# exclude objectfiles
-*.o
-
-# exclude binaries
-*.bin
+# ignore binaries and objectfiles
+**/*.bin
+**/*.o
