@@ -1,22 +1,28 @@
-# TODO: this is garbage! fix it
+TARGET	= os.bin
 
-CC		= gcc
-CC_OUT		= kernel.bin
-CC_SOURCE	= bootloader.o kernel/core/k_main.c kernel/drivers/vga/d_vga.c kernel/drivers/keyboard/d_keyboard.c kernel/drivers/keyboard/d_keymap.c #TODO: un-hardcode this
-CC_FLAGS	= -m32 -O3 -nostdlib -ffreestanding -mno-red-zone -fno-exceptions -fno-pie -fno-stack-protector -Wall -Wextra -Werror -T bootloader/bootloader.ld
+AS	= nasm
+SRC_AS	= $(shell find src/ -type f -name "*.asm")
+AFLAGS	= -f elf32
+OBJS	= $(patsubst %.asm, %.o, $(SRC_AS))
 
-ASM		= nasm
-ASM_FLAGS	= -f elf32
+CC	= gcc
+SRC_C	= $(shell find src/ -type f -name "*.c")
+CFLAGS	= -O2 -nostdlib -ffreestanding -mno-red-zone -fno-exceptions -fno-pie -nostdlib -Wall -Wextra -Werror
+SRC_LD	= $(shell find src/linker -type f -name "*.ld")
+LDFLAGS	= -m32 -T $(SRC_LD)
 
 
-all:
-	@echo assembling bootloader...
-	$(ASM) $(ASM_FLAGS) bootloader/bootloader.asm -o bootloader.o
-	@echo "compiling kernel"
-	$(CC) -o $(CC_OUT) $(CC_SOURCE) $(CC_FLAGS) #TODO: un-hardcode this
-	@echo "build complete"
+all: $(TARGET)
+	@echo build successful!
+
+# compiles c source into objectfiles and link with other objectfiles
+$(TARGET): $(OBJS)
+	@$(CC) -o $(TARGET) $(SRC_C) $(OBJS) $(CFLAGS) $(LDFLAGS)
+
+# assembles asm source into objectfiles
+$(OBJS): $(SRC_AS)
+	@$(AS) -o $@ $(SRC_AS) $(AFLAGS)
+
 
 clean:
-	@echo "cleaning..."
-	rm -rf *.o *.bin
-	@echo "clean complete"
+	rm -rf $(TARGET) $(OBJS)
