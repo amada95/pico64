@@ -11,8 +11,17 @@ CFLAGS	= -O2 -nostdlib -ffreestanding -mno-red-zone -fno-exceptions -fno-pie -no
 SRC_LD	= $(shell find src/linker -type f -name "*.ld")
 LDFLAGS	= -m32 -T $(SRC_LD)
 
+EMU	= qemu-system-x86_64
+EFLAGS	= -fda
 
-all: $(TARGET)
+.PHONY:all build clean
+
+all:
+	@make build
+	@echo emulating target...
+	@$(EMU) $(EFLAGS) $(TARGET)
+
+build: $(TARGET)
 	@echo build successful!
 
 # compiles c source into objectfiles and link with other objectfiles
@@ -22,7 +31,6 @@ $(TARGET): $(OBJS)
 # assembles asm source into objectfiles
 $(OBJS): $(SRC_AS)
 	@$(AS) -o $@ $(SRC_AS) $(AFLAGS)
-
 
 clean:
 	rm -rf $(TARGET) $(OBJS)
