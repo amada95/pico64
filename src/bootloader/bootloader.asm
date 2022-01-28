@@ -1,5 +1,3 @@
-; bootloader.asm
-
 section .boot
 bits 16					; set assembler output to 16-bits (to run in real mode)
 global boot
