@@ -14,7 +14,7 @@ LDFLAGS	= -m32 -T $(SRC_LD)
 EMU	= qemu-system-x86_64
 EFLAGS	= -hda
 
-.PHONY:all build clean
+.PHONY: all build clean
 
 all:
 	@make build
@@ -24,11 +24,11 @@ all:
 build: $(TARGET)
 	@echo build successful!
 
-# compiles c source into objectfiles and link with other objectfiles
+# .c -> .o  +  .o -> .bin
 $(TARGET): $(OBJS)
 	@$(CC) -o $(TARGET) $(SRC_C) $(OBJS) $(CFLAGS) $(LDFLAGS)
 
-# assembles asm source into objectfiles
+# .asm -> .o
 $(OBJS): $(SRC_AS)
 	@$(AS) -o $@ $(SRC_AS) $(AFLAGS)
 
