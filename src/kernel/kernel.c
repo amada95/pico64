@@ -7,13 +7,13 @@ void k_main(void) {
 	/***** BEGIN TESTING CODE *****/
 
 	/* print splash screen */
-	vga_init(YELLOW, BLACK);
-	vga_print_string("beeOS r0.0.0", YELLOW, BLACK);
-	vga_print_newline(YELLOW, BLACK);
-	for (unsigned char i = 0; i < 80; i++) vga_print_char(176, YELLOW, BLACK);
-	vga_print_newline(YELLOW, BLACK);
-	vga_print_newline(YELLOW, BLACK);
-	vga_print_string("> ", YELLOW, BLACK);
+	vga_init(BRIGHT_CYAN, BLACK);
+	vga_print_string("pico64 v0.0.0", BRIGHT_CYAN, BLACK);
+	vga_print_newline(BRIGHT_CYAN, BLACK);
+	for (unsigned char i = 0; i < 80; i++) vga_print_char(220, BRIGHT_CYAN, BLACK);
+	vga_print_newline(BRIGHT_CYAN, BLACK);
+	vga_print_newline(BRIGHT_CYAN, BLACK);
+	vga_print_string("> ", BRIGHT_CYAN, BLACK);
 
 	/* test keyboard input */
 	char keycode = 0;
@@ -21,11 +21,11 @@ void k_main(void) {
 	do {
 		keycode = keyboard_get_keycode();
 		if(keycode == KEY_ENTER) {
-			vga_print_newline(YELLOW, BLACK);
+			vga_print_newline(BRIGHT_CYAN, BLACK);
 		} else {
 			ch = keymap_query(keycode);
 			if (ch != 0) {
-				vga_print_char(ch, YELLOW, BLACK);
+				vga_print_char(ch, BRIGHT_CYAN, BLACK);
 			}
 		}
 		keyboard_wait(0x095FFFFF);
