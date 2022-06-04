@@ -1,9 +1,9 @@
 #ifndef D_KEYBOARD_H
 #define D_KEYBOARD_H
 
-char keyboard_get_keycode(void);
-void keyboard_wait(unsigned int timer_count);
-char keyboard_keycode_to_ascii(char);
+char keyboard_get_keycode (void);
+void keyboard_wait (unsigned int timer_count);
+char keyboard_keycode_to_ascii (char);
 
 #define KEYBOARD_PORT 0x60
 
@@ -91,6 +91,5 @@ char keyboard_keycode_to_ascii(char);
 #define KEY_KEYPAD_SUBTRACT 0x4A
 #define KEY_KEYPAD_ADD 0x4E
 #define KEY_KEYPAD_DIVIDE 0x35
-
 
 #endif
