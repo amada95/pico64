@@ -7,7 +7,7 @@ OBJS	= $(patsubst %.asm, %.o, $(SRC_AS))
 
 CC	= gcc
 SRC_C	= $(shell find src/ -type f -name "*.c")
-CFLAGS	= -O2 -nostdlib -ffreestanding -mno-red-zone -fno-exceptions -fno-pie -nostdlib -Wall -Wextra -Werror
+CFLAGS	= -O2 -std=c99 -nostdlib -ffreestanding -mno-red-zone -fno-exceptions -fno-pie -nostdlib -Wall -Wextra -Werror
 SRC_LD	= src/linker.ld
 LDFLAGS	= -m32 -T $(SRC_LD)
 
